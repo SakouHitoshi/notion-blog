@@ -7,6 +7,17 @@
   font-size: 36px;
 }
 
+@media (max-width: 600px) {
+  .header {
+    display: block;
+    min-height: 64px;
+    padding: 0.5em 0;
+    text-align: center;
+    letter-spacing: -0.02em;
+    font-size: 36px;
+  }
+}
+
 .header ul {
   list-style: none;
   padding: 0;

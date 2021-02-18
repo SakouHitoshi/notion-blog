@@ -1,6 +1,6 @@
 .links {
-  position: absolute; /*←絶対位置*/
-  bottom: 0;
+  position: absolute;
+  bottom: 0px;
 }
 
 .links a {
