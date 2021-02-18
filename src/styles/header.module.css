@@ -1,9 +1,10 @@
 .header {
   display: block;
   min-height: 64px;
-  padding: 2em 0;
+  padding: 0.5em 0;
   text-align: center;
   letter-spacing: -0.02em;
+  font-size: 36px;
 }
 
 .header ul {
@@ -13,21 +14,29 @@
 
 .header ul li {
   display: inline-block;
-  padding: 0 10px;
+  padding: 0 20px;
 }
 
 .header :global(a) {
-  color: var(--accents-3);
-  font-weight: 400;
+  color: #101010;
+  font-weight: 350;
+  text-decoration: none;
 }
 
-.header :global(a.active) {
-  color: #0070f3;
-  font-weight: 600;
+.header :global(a):hover {
+  color: #3291ff;
+  text-decoration: underline;
+  border-bottom: 3px;
+}
+
+.header :global(a.active):hover {
+  color: #3291ff;
+  text-decoration: underline;
+  border-bottom: 3px;
 }
 
 @media (max-width: 600px) {
   .header {
-    padding: .5em 0 2em;
+    padding: 0.5em 0 2em;
   }
 }

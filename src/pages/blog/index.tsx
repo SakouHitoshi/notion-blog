@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Header from '../../components/header'
-
+import Footer from '../../components/footer'
 import blogStyles from '../../styles/blog.module.css'
 import sharedStyles from '../../styles/shared.module.css'
 
@@ -63,7 +63,7 @@ export default ({ posts = [], preview }) => {
         </div>
       )}
       <div className={`${sharedStyles.layout} ${blogStyles.blogIndex}`}>
-        <h1>My Notion Blog</h1>
+        <h1>Blog</h1>
         {posts.length === 0 && (
           <p className={blogStyles.noPosts}>There are no posts yet</p>
         )}
@@ -87,8 +87,7 @@ export default ({ posts = [], preview }) => {
                 <div className="posted">Posted: {getDateStr(post.Date)}</div>
               )}
               <p>
-                {(!post.preview || post.preview.length === 0) &&
-                  'No preview available'}
+                {!post.preview || post.preview.length === 0}
                 {(post.preview || []).map((block, idx) =>
                   textBlock(block, true, `${post.Slug}${idx}`)
                 )}

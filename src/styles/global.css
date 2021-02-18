@@ -16,19 +16,46 @@
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  --font-mono: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
+  --font-mono: 'JetBrains Mono', Menlo, Monaco, Lucida Console, Liberation Mono,
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+  --font-ja-gothic: 'Hiragino Sans W3', 'Hiragino Kaku Gothic ProN',
+    'ヒラギノ角ゴ ProN W3', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic';
 }
 
-* {
-  box-sizing: border-box;
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/web/eot/JetBrainsMono-Regular.eot')
+      format('embedded-opentype'),
+    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/web/woff2/JetBrainsMono-Regular.woff2')
+      format('woff2'),
+    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/web/woff/JetBrainsMono-Regular.woff')
+      format('woff'),
+    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/ttf/JetBrainsMono-Regular.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/web/eot/JetBrainsMono-Italic.eot')
+      format('embedded-opentype'),
+    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/web/woff2/JetBrainsMono-Italic.woff2')
+      format('woff2'),
+    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/web/woff/JetBrainsMono-Italic.woff')
+      format('woff'),
+    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/ttf/JetBrainsMono-Italic.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: italic;
 }
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-size: 20px;
+  font-size: 16px;
+  position: relative;
 }
 
 body {
@@ -36,14 +63,8 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-
-  background-image: radial-gradient(#ddd 1px, transparent 1px),
-    radial-gradient(#ddd 1px, transparent 1px);
-  background-position: 0 0, 25px 25px;
-  background-attachment: fixed;
-  background-size: 50px 50px;
-
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    var(--font-ja-gothic), sans-serif;
   /* Hack */
   overflow-x: hidden;
 }
@@ -233,12 +254,36 @@ pre.dark[class*='language-'] {
 }
 
 .explanation {
-  font-size: 1rem;
+  font-size: 0.5rem;
   width: 35rem;
   max-width: 100vw;
-  padding: 0 2rem;
+  padding: 0 2rem 2rem 2rem;
   background: var(--bg);
-  margin: var(--gap-half) auto;
+  margin: auto;
+  padding-bottom: 200px;
+}
+
+/* プロフィールのプロフィール */
+.explanation h1 {
+  font-size: 2rem;
+  margin: 0 0 1rem 0;
+  font-weight: 350;
+}
+
+/* プロフィールのプロフィール文字 */
+.explanation a {
+  color: black;
+  font-size: 1.2rem;
+  margin-left: 180px;
+  font-weight: 260;
+}
+
+/* プロフィールの紹介欄 */
+.explanation p {
+  color: black;
+  font-size: 17px;
+  font-weight: 260;
+  line-height: 18px;
 }
 figure {
   font-size: 0.85rem;
@@ -251,12 +296,16 @@ figure {
   color: #999;
 }
 
+/* ブログ内リンク */
 a {
-  color: #0070f3;
+  font-weight: 480;
   text-decoration: none;
 }
+
 a:hover {
   color: #3291ff;
+  text-decoration: underline;
+  border-bottom: 3px;
 }
 
 .links {
@@ -277,13 +326,15 @@ mark {
   max-width: calc(100vw - var(--gap-double));
 }
 
+/* ブログ内h1タグ */
 h1 {
   margin: var(--gap-double) 0 calc(0.5 * var(--gap)) 0;
-  font-size: 2.25rem;
-  font-weight: 800;
-  letter-spacing: -0.05rem;
+  font-size: 2.5rem;
+  font-weight: 580;
+  letter-spacing: 0.03rem;
 }
 
+/* ブログ内h2タグ */
 h2 {
   font-weight: 300;
   font-size: 1.25rem;
@@ -305,11 +356,13 @@ h2 {
   outline: none;
 }
 
+/* ブログ内文字 */
 p {
-  color: #555;
-  font-weight: 400;
-  font-size: 0.94rem;
-  line-height: 1.7;
+  color: black;
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  letter-spacing: 0.2px;
 }
 pre {
   white-space: pre;
@@ -357,14 +410,16 @@ code {
   border-bottom: 1px dashed black;
 }
 
+/* フッター */
 footer {
-  padding: 2em 0;
+  background-color: #89d0de;
+  color: #fff;
   text-align: center;
-}
-
-footer img {
-  display: block;
-  margin: 0.5rem auto;
+  padding: 16px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 16px;
 }
 
 footer span:nth-child(3) {
