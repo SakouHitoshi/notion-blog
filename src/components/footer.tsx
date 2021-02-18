@@ -9,7 +9,7 @@ const contacts = [
   {
     Comp: Twitter,
     alt: 'twitter icon',
-    link: 'https://twitter.com/sakou_remark',
+    link: 'https://twitter.com/Hosso_remark',
   },
   {
     Comp: GitHub,
