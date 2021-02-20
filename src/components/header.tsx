@@ -9,7 +9,7 @@ const navItems: { label: string; page?: string; link?: string }[] = [
   { label: 'Blog', page: '/blog' },
 ]
 
-const ogImageUrl = 'https://hosso-blog.com/blog/public/og-image.png'
+const ogImageUrl = 'https://hosso-blog.jp/blog/og-image.png'
 
 export default ({ titlePre = '' }) => {
   const { pathname } = useRouter()
