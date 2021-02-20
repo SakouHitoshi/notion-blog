@@ -4,33 +4,18 @@
     <subtitle>Blog</subtitle>
     <link href="/atom" rel="self" type="application/rss+xml"/>
     <link href="/" />
-    <updated>2021-02-18T17:32:32.802Z</updated>
+    <updated>2021-02-20T09:39:38.220Z</updated>
     <id>My Notion Blog</id>
     <entry>
-      <id>/blog/fjordbootcampに入会して3ヶ月経ち思う事</id>
-      <title>fjordbootcampに入会して3ヶ月経ち思う事</title>
-      <link href="/blog/fjordbootcampに入会して3ヶ月経ち思う事"/>
-      <updated>2021-02-17T15:00:00.160Z</updated>
+      <id>/blog/notion-blog始めました！！</id>
+      <title>Notion Blog始めました！！</title>
+      <link href="/blog/notion-blog始めました！！"/>
+      <updated>2021-02-18T15:00:00.145Z</updated>
       <content type="xhtml">
         <div xmlns="http://www.w3.org/1999/xhtml">
-          <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p><p>テスト</p>
+          <p>初めまして！Hossoと申します。</p><p>現在はフリーランスで音楽系の仕事をしております。</p><p>昨年の11月からプログラミングスクールのフィヨルドブートキャンプに通っており、32期生と言う区分です。</p><p>折角ブログを始めるなら自分で作ってみたい！と思いNotion Blogでブログを立ち上げました！</p><p>🤔 なんでNotion Blogなの？</p>
           <p class="more">
-            <a href="/blog/fjordbootcampに入会して3ヶ月経ち思う事">Read more</a>
-          </p>
-        </div>
-      </content>
-      
-    </entry>
-    <entry>
-      <id>/blog/notion-blog始めました！！！</id>
-      <title>Notion Blog始めました！！！</title>
-      <link href="/blog/notion-blog始めました！！！"/>
-      <updated>2021-02-16T15:00:00.161Z</updated>
-      <content type="xhtml">
-        <div xmlns="http://www.w3.org/1999/xhtml">
-          <p>初めまして！sakouと申します。</p><p>現在はフリーランスで音楽系の仕事をしております。</p><p>昨年の11月からプログラミングスクールのフィヨルドブートキャンプに通っており、32期生と言う区分です。</p><p>折角ブログを始めるなら自分で作ってみたい！と思いNotion Blogでブログを立ち上げました！</p><p>🤔 なんでNotion Blogなの？</p>
-          <p class="more">
-            <a href="/blog/notion-blog始めました！！！">Read more</a>
+            <a href="/blog/notion-blog始めました！！">Read more</a>
           </p>
         </div>
       </content>
