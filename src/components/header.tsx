@@ -9,7 +9,7 @@ const navItems: { label: string; page?: string; link?: string }[] = [
   { label: 'Blog', page: '/blog' },
 ]
 
-const ogImageUrl = 'https://hosso-blog.com/blog/og-image.png'
+const ogImageUrl = 'public/og-image.png'
 
 export default ({ titlePre = '' }) => {
   const { pathname } = useRouter()
@@ -20,10 +20,10 @@ export default ({ titlePre = '' }) => {
         <title>{titlePre ? `${titlePre}` : ''} </title>
         <meta name="description" />
         <meta name="og:title" content="Hosso Blog" />
-        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:image" content="public/og-image.png" />
         <meta name="twitter:site" content="@_ijjk" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content={ogImageUrl} />
+        <meta name="twitter:image" content="public/og-image.png" />
       </Head>
       <ul>
         {navItems.map(({ label, page, link }) => (
