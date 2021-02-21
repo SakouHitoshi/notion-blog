@@ -93,7 +93,7 @@
 
 @media (max-width: 600px) {
   .postPreview {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 
@@ -108,7 +108,7 @@
 
 @media (max-width: 600px) {
   .postPreview p {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 
