@@ -20,16 +20,16 @@ export default ({ titlePre = '' }) => {
         <title>{titlePre ? `${titlePre}` : ''} </title>
         <meta name="description" />
         <meta name="og:title" content="Hosso Blog" />
-        <meta property="og:url" content="https://hosso-blog.jp/blog" />
+        <meta property="og:url" content="https://hosso-blog.jp" />
         <meta
           property="og:image"
-          content="https://notion-blog/public/og-image"
+          content="https://hosso-blog.jp/og-image.png"
         />
         <meta name="twitter:site" content="@Hosso_remark" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:image"
-          content="https://notion-blog/public/og-image"
+          content="https://hosso-blog.jp/og-image.png"
         />
       </Head>
       <ul>
