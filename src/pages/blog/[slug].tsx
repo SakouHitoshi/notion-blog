@@ -138,7 +138,17 @@ const RenderPost = ({ post, redirect, preview }) => {
 
   return (
     <>
-      <Header titlePre={post.Page} />
+      <Header
+        titlePre={post.Page}
+        description={post.Excerpt}
+        ogImageUrl={
+          !post.OGImage
+            ? ''
+            : `https://hosso-blog/api/asset?assetUrl=${encodeURIComponent(
+                post.OGImage
+              )}&blockId=${post.dbRowBlockId}`
+        }
+      />
       {preview && (
         <div className={blogStyles.previewAlertContainer}>
           <div className={blogStyles.previewAlert}>

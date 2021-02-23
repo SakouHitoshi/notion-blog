@@ -9,25 +9,41 @@ const navItems: { label: string; page?: string; link?: string }[] = [
   { label: 'Blog', page: '/blog' },
 ]
 
-export default ({ titlePre = '' }) => {
+const defaultTitle = 'Hosso Blog'
+const defaultOgImageUrl = 'https://hosso-blog.jp/og-image.png'
+const defaultDescription =
+  'プログラミング学習、音楽の事を中心に書いているブログ'
+
+export default ({ titlePre = '', description = '', ogImageUrl = '' }) => {
   const { pathname } = useRouter()
 
   return (
     <header className={styles.header}>
       <Head>
-        <title>{titlePre ? `${titlePre}` : ''} </title>
-        <meta name="description" />
-        <meta name="og:title" content="Hosso Blog" />
-        <meta property="og:url" content="https://hosso-blog.jp" />
+        <title>
+          {titlePre == '' ? defaultTitle : `${titlePre} - ${defaultTitle}`}
+        </title>
+        <meta
+          name="description"
+          content={description == '' ? defaultDescription : description}
+        />
+        <meta
+          property="og:title"
+          content={titlePre == '' ? defaultTitle : titlePre}
+        />
+        <meta
+          property="og:description"
+          content={description == '' ? defaultDescription : description}
+        />
         <meta
           property="og:image"
-          content="https://hosso-blog.jp/og-image.png"
+          content={ogImageUrl == '' ? defaultOgImageUrl : ogImageUrl}
         />
         <meta name="twitter:site" content="@Hosso_remark" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:image"
-          content="https://hosso-blog.jp/og-image.png"
+          content={ogImageUrl == '' ? defaultOgImageUrl : ogImageUrl}
         />
       </Head>
       <ul>
