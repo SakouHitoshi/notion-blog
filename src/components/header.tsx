@@ -9,12 +9,18 @@ const navItems: { label: string; page?: string; link?: string }[] = [
   { label: 'Blog', page: '/blog' },
 ]
 
+const defaultUrl = 'https://hosso-blog.jp'
 const defaultTitle = 'Hosso Blog'
 const defaultOgImageUrl = 'https://hosso-blog.jp/og-image.png'
 const defaultDescription =
   'プログラミング学習、音楽の事を中心に書いているブログ'
 
-export default ({ titlePre = '', description = '', ogImageUrl = '' }) => {
+export default ({
+  path = '',
+  titlePre = '',
+  description = '',
+  ogImageUrl = '',
+}) => {
   const { pathname } = useRouter()
 
   return (
