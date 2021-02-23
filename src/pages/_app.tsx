@@ -3,6 +3,7 @@ import 'katex/dist/katex.css'
 import Footer from '../components/footer'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import * as gtag from '../lib/gtag'
 
 export default ({ Component, pageProps }) => {
   const router = useRouter()
