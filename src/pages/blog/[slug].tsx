@@ -144,7 +144,7 @@ const RenderPost = ({ post, redirect, preview }) => {
         ogImageUrl={
           !post.OGImage
             ? ''
-            : `https://hosso-blog/api/asset?assetUrl=${encodeURIComponent(
+            : `https://hosso-blog.jp/api/asset?assetUrl=${encodeURIComponent(
                 post.OGImage
               )}&blockId=${post.dbRowBlockId}`
         }
