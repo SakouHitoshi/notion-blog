@@ -342,7 +342,6 @@ h2 {
   font-weight: 300;
   font-size: 1.25rem;
   letter-spacing: -0.02rem;
-  color: var(--accents-3);
 }
 
 .video {
@@ -361,7 +360,6 @@ h2 {
 
 /* ブログ内文字 */
 p {
-  color: black;
   font-weight: 300;
   font-size: 1.1rem;
   line-height: 1.8;

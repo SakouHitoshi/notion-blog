@@ -7,6 +7,25 @@
   font-weight: 350;
 }
 
+.tagIndex {
+  max-width: calc(600px + 10%);
+  margin: 0 auto;
+  margin-top: 140px;
+  padding-bottom: 200px;
+}
+
+/* タグ */
+.tagIndex h3 {
+  font-size: 22px;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid grey;
+}
+
+.tag {
+  font-size: 2px;
+}
+
 .previewAlertContainer {
   display: flex;
   justify-content: center;
@@ -66,19 +85,19 @@
 }
 
 /* ブログポスト */
-.postPreview a {
+.titleContainer a {
   font-size: 24px;
   color: #262525;
 }
 
-.postPreview a:hover {
+.titleContainer a:hover {
   color: #3291ff;
   text-decoration: underline;
   border-bottom: 3px;
 }
 
 @media (max-width: 600px) {
-  .postPreview a {
+  .titleContainer a {
     font-size: 20px;
   }
 }
@@ -97,13 +116,24 @@
   }
 }
 
+/* ブログタグ */
+.tag {
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .tag {
+    font-size: 12px;
+  }
+}
+
 /* ブログ見出し */
 .postPreview p {
   font-size: 14px;
   font-weight: 200;
   max-width: 600px;
   padding-bottom: 20px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid grey;
 }
 
 @media (max-width: 600px) {
