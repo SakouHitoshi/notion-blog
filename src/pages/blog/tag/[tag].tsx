@@ -1,20 +1,22 @@
 import Link from 'next/link'
-import Header from '../../components/header'
-import Footer from '../../components/footer'
-import blogStyles from '../../styles/blog.module.css'
-import sharedStyles from '../../styles/shared.module.css'
+import { useRouter } from 'next/router'
+import Header from '../../../components/header'
+
+import blogStyles from '../../../styles/blog.module.css'
+import sharedStyles from '../../../styles/shared.module.css'
 
 import {
   getBlogLink,
   getTagLink,
   getDateStr,
   postIsPublished,
-} from '../../lib/blog-helpers'
-import { textBlock } from '../../lib/notion/renderers'
-import getNotionUsers from '../../lib/notion/getNotionUsers'
-import getBlogIndex from '../../lib/notion/getBlogIndex'
+} from '../../../lib/blog-helpers'
+import { textBlock } from '../../../lib/notion/renderers'
+import { useEffect } from 'react'
+import getNotionUsers from '../../../lib/notion/getNotionUsers'
+import getBlogIndex from '../../../lib/notion/getBlogIndex'
 
-export async function getStaticProps({ preview }) {
+export async function getStaticProps({ params: { tag }, preview }) {
   const postsTable = await getBlogIndex()
 
   const authorsToGet: Set<string> = new Set()
@@ -29,9 +31,23 @@ export async function getStaticProps({ preview }) {
       for (const author of post.Authors) {
         authorsToGet.add(author)
       }
+      if (post.Tags.indexOf(tag) === -1) {
+        return null
+      }
       return post
     })
     .filter(Boolean)
+
+  if (posts.length === 0) {
+    console.log(`Failed to find posts for tag: ${tag}`)
+    return {
+      props: {
+        redirect: '/blog',
+        preview: false,
+      },
+      unstable_revalidate: 5,
+    }
+  }
 
   const tags: string[] = Object.keys(postsTable)
     .filter(slug => postIsPublished(postsTable[slug]))
@@ -50,15 +66,57 @@ export async function getStaticProps({ preview }) {
       preview: preview || false,
       posts,
       tags,
+      tag,
     },
     unstable_revalidate: 10,
   }
 }
 
-export default ({ posts = [], tags = [], preview }) => {
+// Return our list of tags to prerender
+export async function getStaticPaths() {
+  const postsTable = await getBlogIndex()
+
+  return {
+    paths: Object.keys(postsTable)
+      .filter(slug => postIsPublished(postsTable[slug]))
+      .map(slug => postsTable[slug].Tags)
+      .flat()
+      .filter((tag, index, self) => self.indexOf(tag) === index)
+      .map(tag => getTagLink(tag)),
+    fallback: true,
+  }
+}
+
+export default ({ tag, posts = [], tags = [], redirect, preview }) => {
+  const router = useRouter()
+
+  useEffect(() => {
+    if (redirect && posts.length === 0) {
+      router.replace(redirect)
+    }
+  }, [redirect, posts])
+
+  // If the page is not yet generated, this will be displayed
+  // initially until getStaticProps() finishes running
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
+
+  // if you don't have any posts at this point, and are not
+  // loading one from fallback then  redirect back to the index
+  if (posts.length === 0) {
+    return (
+      <div className={blogStyles.post}>
+        <p>
+          Woops! didn't find any posts, redirecting you back to the blog index
+        </p>
+      </div>
+    )
+  }
+
   return (
     <>
-      <Header titlePre="Blog" />
+      <Header titlePre={`${tag}を含む記事`} />
       {preview && (
         <div className={blogStyles.previewAlertContainer}>
           <div className={blogStyles.previewAlert}>
@@ -71,7 +129,7 @@ export default ({ posts = [], tags = [], preview }) => {
         </div>
       )}
       <div className={`${sharedStyles.layout} ${blogStyles.blogIndex}`}>
-        <h1>Blog</h1>
+        <h2>{tag}</h2>
         {posts.length === 0 && (
           <p className={blogStyles.noPosts}>There are no posts yet</p>
         )}
@@ -79,20 +137,24 @@ export default ({ posts = [], tags = [], preview }) => {
           return (
             <div className={blogStyles.postPreview} key={post.Slug}>
               <h3>
-                <Link href="/blog/[slug]" as={getBlogLink(post.Slug)}>
-                  <div className={blogStyles.titleContainer}>
-                    {!post.Published && (
-                      <span className={blogStyles.draftBadge}>Draft</span>
-                    )}
+                <div className={blogStyles.titleContainer}>
+                  {!post.Published && (
+                    <span className={blogStyles.draftBadge}>Draft</span>
+                  )}
+                  <Link
+                    href="/blog/[slug]"
+                    as={getBlogLink(post.Slug)}
+                    passHref
+                  >
                     <a>{post.Page}</a>
-                  </div>
-                </Link>
+                  </Link>
+                </div>
               </h3>
               {post.Authors.length > 0 && (
                 <div className="authors">By: {post.Authors.join(' ')}</div>
               )}
               {post.Date && (
-                <div className="posted">Posted: {getDateStr(post.Date)}</div>
+                <div className="posted">{getDateStr(post.Date)}</div>
               )}
               {post.Tags &&
                 post.Tags.length > 0 &&
@@ -103,13 +165,12 @@ export default ({ posts = [], tags = [], preview }) => {
                     key={`${post.Slug}-${tag}`}
                     passHref
                   >
-                    <div className="tag">
-                      <a className={blogStyles.tag}>🔖{tag}</a>
-                    </div>
+                    <a className={blogStyles.tag}>🔖{tag}</a>
                   </Link>
                 ))}
               <p>
-                {!post.preview || post.preview.length === 0}
+                {(!post.preview || post.preview.length === 0) &&
+                  'No preview available'}
                 {(post.preview || []).map((block, idx) =>
                   textBlock(block, true, `${post.Slug}${idx}`)
                 )}
