@@ -15,12 +15,7 @@ const defaultOgImageUrl = 'https://hosso-blog.jp/og-image.png'
 const defaultDescription =
   'プログラミング学習、音楽の事を中心に書いているブログ'
 
-export default ({
-  path = '',
-  titlePre = '',
-  description = '',
-  ogImageUrl = '',
-}) => {
+export default ({ titlePre = '', description = '', ogImageUrl = '' }) => {
   const { pathname } = useRouter()
 
   return (
