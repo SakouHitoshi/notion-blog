@@ -15,7 +15,7 @@ export default () => (
         <div className="Profile">
           <img src="Profile2.jpg" alt="Profile"></img>
         </div>
-        <p>Hossoといいます。1991年生まれの29歳です。</p>
+        <p>Hossoと申します。1991年生まれの29歳です。</p>
         <p>フリーランスで音楽系の仕事をしております。</p>
         <p>
           現在プログラミングスクールのフィヨルドブートキャンプで学習中、日々の学んだ事なんかを発信していきます。
