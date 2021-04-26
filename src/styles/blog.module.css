@@ -1,3 +1,7 @@
+.post :global(p) {
+  min-height: 1.8em;
+}
+
 .blogIndex {
   padding: 0 5%;
 }
