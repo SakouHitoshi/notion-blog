@@ -361,8 +361,8 @@ h2 {
 /* ブログ内文字 */
 p {
   font-weight: 300;
-  font-size: 1.1rem;
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 1.4;
   letter-spacing: 0.2px;
 }
 pre {
