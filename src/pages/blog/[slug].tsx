@@ -10,6 +10,7 @@ import { textBlock } from '../../lib/notion/renderers'
 import getPageData from '../../lib/notion/getPageData'
 import React, { CSSProperties, useEffect } from 'react'
 import getBlogIndex from '../../lib/notion/getBlogIndex'
+import YouTube from 'react-youtube'
 import getNotionUsers from '../../lib/notion/getNotionUsers'
 import {
   getBlogLink,
@@ -323,6 +324,11 @@ const RenderPost = ({ post, tags = [], redirect, preview }) => {
                 )
               } else {
                 // notion resource
+                const youtubeId = properties.source[0][0].match(/\?v=([^&]+)/)
+                toRender.push(
+                  <YouTube videoId={youtubeId[1]} key={youtubeId[1]} />
+                )
+
                 child = (
                   <Comp
                     key={!useWrapper ? id : undefined}
